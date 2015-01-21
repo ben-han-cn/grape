@@ -6,6 +6,7 @@ the relationship between them, then generate a store to handle all the
 model CRUD operation.
 
 ## Usage
+``` clojure
 (-> (mk-resource-descriptor)
     (declare-type-hierarchy [:teacher] [:classroom :student])
     (descriptor/declare-resource :teacher {:fields {:name :string :major :string} 
@@ -27,6 +28,7 @@ model CRUD operation.
 (update-resource :student {:name "Jerry"} {:teachers ["Henrry"]}); will be rejected since it is used by Jerry
 (del-resource :teacher {:name "Tom"}); now Tom will be deleted since no one refer to it.
 (del-resource :classroom {:name "l1"}) ; will delete the classroom and Jerry
+``` 
 
 ## Design
 Typically, one application manages severl related models. Model has attributes.
