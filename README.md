@@ -22,10 +22,11 @@ model CRUD operation.
 (add-resource :classroom {:name "l1"})
 (add-resource :student {:name "Jerry" :age 10 :teachers ["Tom" "Henrry"] :classroom "l1"})
 
-(get-resources :student {:name "Jerry"}) ;  {:name "Jerry" :age 10 :teachers ["Tom"] :classroom "l1"}
+(get-resources :student {:name "Jerry"}) ;  {:name "Jerry" :age 10 
+                                         ;   :teachers ["Tom" "Henrry"] :classroom "l1"}
 
 (del-resource :teacher {:name "Tom"}); will be rejected since it is used by Jerry
-(update-resource :student {:name "Jerry"} {:teachers ["Henrry"]}); will be rejected since it is used by Jerry
+(update-resource :student {:name "Jerry"} {:teachers ["Henrry"]}); 
 (del-resource :teacher {:name "Tom"}); now Tom will be deleted since no one refer to it.
 (del-resource :classroom {:name "l1"}) ; will delete the classroom and Jerry
 ``` 
